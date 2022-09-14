@@ -1,8 +1,6 @@
-import { cp } from "fs";
 import React from "react";
 import "./App.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { Console } from "console";
 
 function App(): JSX.Element {
     return (
