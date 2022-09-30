@@ -1,3 +1,7 @@
+import { count } from "console";
+import { parse } from "path";
+import { PassThrough } from "stream";
+
 /**
  * Consume an array of numbers, and return a new array containing
  * JUST the first and last number. If there are no elements, return
@@ -5,7 +9,15 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    const num = numbers[0];
+    const num2 = numbers[numbers.length - 1];
+    if (numbers.length === 0) {
+        const secarray = [];
+        return secarray;
+    } else {
+        const newarray = [num, num2];
+        return newarray;
+    }
 }
 
 /**
@@ -13,7 +25,11 @@ export function bookEndList(numbers: number[]): number[] {
  * number has been tripled (multiplied by 3).
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers;
+    const newArr = [];
+    for (let i = 0; i < numbers.length; i++) {
+        newArr.push(numbers[i] * 3);
+    }
+    return newArr;
 }
 
 /**
@@ -21,7 +37,16 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    const numberArray = [];
+    const length = numbers.length;
+    for (var i = 0; i < length; i++) {
+        //var s = '';
+        //var num = parseInt(s) || 0;
+        var stringToChange = numbers[i];
+        var newInt = parseInt(stringToChange) || 0;
+        numberArray.push(newInt);
+    }
+    return numberArray;
 }
 
 /**
@@ -32,7 +57,20 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const numberArray = [];
+    const length = amounts.length;
+    for (var i = 0; i < length; i++) {
+        //var s = '';
+        //var num = parseInt(s) || 0;
+        var stringToChange = amounts[i];
+        //take away the dollar from the string and update it
+        if (stringToChange.includes("$")) {
+            stringToChange = stringToChange.substring(1);
+        }
+        var newInt = parseInt(stringToChange) || 0;
+        numberArray.push(newInt);
+    }
+    return numberArray;
 };
 
 /**
@@ -41,7 +79,25 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    const newList = []; // create a new list
+    const length = messages.length;
+    for (var i = 0; i < length; i++) {
+        //for loop for checking each element
+
+        if (messages[i].includes("?", -1)) {
+            //if  end in question delete
+            continue;
+        } else {
+            if (messages[i].includes("!", -1)) {
+                var temp = messages[i].toUpperCase();
+            } else {
+                temp = messages[i];
+            }
+        }
+
+        newList.push(temp);
+    }
+    return newList;
 };
 
 /**
@@ -49,7 +105,19 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    //for loop to check each element
+    const length = words.length;
+    //create count for each element that is less than 4
+    var count = 0;
+    for (var i = 0; i < length; i++) {
+        //increase count if less than 4
+        if (words[i].length < 4) {
+            count += 1;
+        } else {
+            continue;
+        }
+    }
+    return count;
 }
 
 /**
@@ -58,7 +126,26 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    var temp;
+    //base case
+    if (colors.length === null || colors.length === 0) {
+        temp = true;
+    } else {
+        for (var i = 0; i < colors.length; i++) {
+            if (
+                colors[i] === "red" ||
+                colors[i] === "blue" ||
+                colors[i] === "green"
+            ) {
+                temp = true;
+                continue;
+            } else {
+                temp = false;
+                break;
+            }
+        }
+    }
+    return temp;
 }
 
 /**
@@ -69,7 +156,28 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    //get sum
+    var empty_string = "";
+    var count = 0;
+    for (var i = 0; i < addends.length; i++) {
+        //add each number to a count
+
+        count += addends[i];
+    }
+    var s = count.toString();
+    empty_string += s;
+    empty_string += "=";
+    if (addends.length == 0) {
+        empty_string += "0";
+    }
+    for (var i = 0; i < addends.length; i++) {
+        if (i != 0) {
+            empty_string += "+";
+        }
+        empty_string += addends[i].toString();
+    }
+
+    return empty_string;
 }
 
 /**
@@ -82,5 +190,22 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    const loc = values.findIndex(
+        (negativeNum: number): boolean => negativeNum < 0
+    );
+    if (loc === -1) {
+        const addSum = values.reduce(
+            (currentSum: number, num: number) => currentSum + num,
+            0
+        );
+        return [...values, addSum];
+    } else {
+        const begin = values.slice(0, loc);
+        const end = values.slice(loc + 1, values.length);
+        const addSum = begin.reduce(
+            (currentSum: number, num: number) => currentSum + num,
+            0
+        );
+        return [...begin, values[loc], addSum, ...end];
+    }
 }
