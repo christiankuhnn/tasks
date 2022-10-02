@@ -89,7 +89,7 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
             continue;
         } else {
             if (messages[i].includes("!", -1)) {
-                const temp = messages[i].toUpperCase();
+                var temp = messages[i].toUpperCase();
             } else {
                 temp = messages[i];
             }
@@ -164,7 +164,7 @@ export function makeMath(addends: number[]): string {
 
         count += addends[i];
     }
-    let s = count.toString();
+    const s = count.toString();
     empty_string += s;
     empty_string += "=";
     if (addends.length == 0) {
