@@ -39,11 +39,11 @@ export function tripleNumbers(numbers: number[]): number[] {
 export function stringsToIntegers(numbers: string[]): number[] {
     const numberArray = [];
     const length = numbers.length;
-    for (var i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         //var s = '';
         //var num = parseInt(s) || 0;
-        var stringToChange = numbers[i];
-        var newInt = parseInt(stringToChange) || 0;
+        const stringToChange = numbers[i];
+        const newInt = parseInt(stringToChange) || 0;
         numberArray.push(newInt);
     }
     return numberArray;
@@ -59,15 +59,15 @@ export function stringsToIntegers(numbers: string[]): number[] {
 export const removeDollars = (amounts: string[]): number[] => {
     const numberArray = [];
     const length = amounts.length;
-    for (var i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         //var s = '';
         //var num = parseInt(s) || 0;
-        var stringToChange = amounts[i];
+        let stringToChange = amounts[i];
         //take away the dollar from the string and update it
         if (stringToChange.includes("$")) {
             stringToChange = stringToChange.substring(1);
         }
-        var newInt = parseInt(stringToChange) || 0;
+        const newInt = parseInt(stringToChange) || 0;
         numberArray.push(newInt);
     }
     return numberArray;
@@ -81,7 +81,7 @@ export const removeDollars = (amounts: string[]): number[] => {
 export const shoutIfExclaiming = (messages: string[]): string[] => {
     const newList = []; // create a new list
     const length = messages.length;
-    for (var i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         //for loop for checking each element
 
         if (messages[i].includes("?", -1)) {
@@ -89,7 +89,7 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
             continue;
         } else {
             if (messages[i].includes("!", -1)) {
-                var temp = messages[i].toUpperCase();
+                const temp = messages[i].toUpperCase();
             } else {
                 temp = messages[i];
             }
@@ -108,8 +108,8 @@ export function countShortWords(words: string[]): number {
     //for loop to check each element
     const length = words.length;
     //create count for each element that is less than 4
-    var count = 0;
-    for (var i = 0; i < length; i++) {
+    let count = 0;
+    for (let i = 0; i < length; i++) {
         //increase count if less than 4
         if (words[i].length < 4) {
             count += 1;
@@ -126,12 +126,12 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    var temp;
+    let temp;
     //base case
     if (colors.length === null || colors.length === 0) {
         temp = true;
     } else {
-        for (var i = 0; i < colors.length; i++) {
+        for (let i = 0; i < colors.length; i++) {
             if (
                 colors[i] === "red" ||
                 colors[i] === "blue" ||
@@ -157,20 +157,20 @@ export function allRGB(colors: string[]): boolean {
  */
 export function makeMath(addends: number[]): string {
     //get sum
-    var empty_string = "";
-    var count = 0;
-    for (var i = 0; i < addends.length; i++) {
+    let empty_string = "";
+    let count = 0;
+    for (let i = 0; i < addends.length; i++) {
         //add each number to a count
 
         count += addends[i];
     }
-    var s = count.toString();
+    let s = count.toString();
     empty_string += s;
     empty_string += "=";
     if (addends.length == 0) {
         empty_string += "0";
     }
-    for (var i = 0; i < addends.length; i++) {
+    for (let i = 0; i < addends.length; i++) {
         if (i != 0) {
             empty_string += "+";
         }
