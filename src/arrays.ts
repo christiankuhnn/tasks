@@ -89,6 +89,7 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
             continue;
         } else {
             if (messages[i].includes("!", -1)) {
+                // eslint-disable-next-line no-var
                 var temp = messages[i].toUpperCase();
             } else {
                 temp = messages[i];
