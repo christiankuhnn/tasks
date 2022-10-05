@@ -123,7 +123,7 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    let temp;
+    let temp = false;
     //base case
     if (colors.length === null || colors.length === 0) {
         temp = true;
