@@ -12,7 +12,7 @@ export function makeBlankQuestion(
     name: string,
     type: QuestionType
 ): Question {
-    let blankQuestion = {
+    const blankQuestion = {
         body: "",
         expected: "",
         id: id,
